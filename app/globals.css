@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* FB → Arrow dot-matrix animation (driven by parent .group:hover) */
+.fb-dot {
+  left: var(--fb-x);
+  top: var(--fb-y);
+  transform: translate(-50%, -50%);
+  transition-property: left, top;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.group:hover .fb-dot {
+  left: var(--arrow-x);
+  top: var(--arrow-y);
+}
