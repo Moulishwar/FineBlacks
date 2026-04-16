@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: "FineBlacks International | Sustainable Carbon Solutions",
   description:
     "Leading the circular economy with premium Recycled and Virgin Carbon Black solutions. Pigment powders, recycling, and sustainability.",
+  icons: {
+    icon: "/images/Icon_head.png",
+    apple: "/images/Icon_head.png",
+    shortcut: "/images/Icon_head.png",
+  },
 };
 
 export default function RootLayout({
