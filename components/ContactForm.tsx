@@ -1,13 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
+import { companyInfo } from "@/data/company";
 import { productInterestOptions } from "@/data/products";
 import { Turnstile } from "@marsidev/react-turnstile";
+
+const submissionFailedHelp: ReactNode = (
+  <>
+    We couldn&apos;t send your message through the form. Please email us directly at{" "}
+    <a
+      href={`mailto:${companyInfo.email}`}
+      className="underline font-medium underline-offset-2 hover:text-red-800"
+    >
+      {companyInfo.email}
+    </a>
+    .
+  </>
+);
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<ReactNode | null>(null);
   const [token, setToken] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -60,16 +74,11 @@ export default function ContactForm() {
         const responseText = await res.text();
         console.error("Submission failed:", responseText);
 
-        if (res.status === 429) {
-          setError("Too many requests. Try again later.");
-          return;
-        }
-
-        setError("Submission failed. Please try again.");
+        setError(submissionFailedHelp);
       })
       .catch((err) => {
         console.error("Submission error:", err);
-        setError("Network error. Please try again.");
+        setError(submissionFailedHelp);
       })
       .finally(() => {
         setIsSubmitting(false);
@@ -116,9 +125,9 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {error ? (
-        <p className="text-sm text-red-600" role="alert">
+        <div className="text-sm text-red-600 leading-relaxed" role="alert">
           {error}
-        </p>
+        </div>
       ) : null}
       {/* Name */}
       <div>
