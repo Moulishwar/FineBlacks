@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
 import { companyInfo } from "@/data/company";
 
@@ -300,9 +301,18 @@ export default function ContactPage() {
               <h2 className="text-xl font-semibold text-carbon mb-2">
                 Send us a message
               </h2>
-              <p className="text-sm text-gray-500 mb-8">
+              <p className="text-sm text-gray-500 mb-6">
                 Fill out the form below and our team will get back to you within
                 24 hours.
+              </p>
+              <p className="text-xs text-gray-500 mb-8 leading-relaxed">
+                We only use what you share here to reply to your inquiry. A few
+                standard safeguards help us keep this form safe and reliable; if
+                you would like more detail, our{" "}
+                <Link href="/privacy" className="text-eco hover:underline">
+                  Privacy
+                </Link>{" "}
+                page explains how we handle information.
               </p>
               <ContactForm />
             </div>

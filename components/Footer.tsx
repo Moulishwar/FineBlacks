@@ -76,7 +76,13 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} FineBlacks International. All
             rights reserved.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            <Link
+              href="/privacy"
+              className="text-xs text-gray-400 hover:text-eco transition-colors"
+            >
+              Privacy
+            </Link>
             <span className="text-xs text-gray-500">
               Sustainable Carbon Solutions
             </span>
